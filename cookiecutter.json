@@ -1,0 +1,7 @@
+{
+    "project_name": "dbtProjectName",
+    "dbt_profile": "dbtprof",
+    "gcp_location": "europe-west1",
+    "gcp_default_dataset": "raw",
+    "gcp_dev_project": "test"
+}

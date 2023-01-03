@@ -1,0 +1,38 @@
+{
+  "name": "{{cookiecutter.project_name}}_devcontainer",
+  "build": { "dockerfile": "Dockerfile" },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux#": "/bin/bash",
+    "python.pythonPath": "/poetry/venvs/bin/python3",
+    "python.defaultInterpreterPath": "/poetry/venvs/bin/python3",
+    "files.associations": {
+      "*.yaml": "jinja-yaml",
+      "*.yml": "jinja-yaml",
+      "*.sql": "jinja-sql",
+      "*.md": "jinja-md"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.associations": {
+          "*.sql": "jinja-sql"
+        }
+      },
+      "extensions": [
+        "astienboutonnet.vscode-dbt",
+        "innoverio.vscode-dbt-power-user",
+        "samuelcolvin.jinjahtml"
+      ]
+    }
+  },
+  "forwardPorts": [3000, 8080],
+  
+  "workspaceFolder": "/workspaces/{{cookiecutter.project_name}}",
+  "mounts": [
+    "source=${localEnv:HOME}/.config/gcloud,target=/root/.config/gcloud,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source={{cookiecutter.project_name}}-venv-volume,target=/poetry/venvs,type=volume"
+  ],
+  "postAttachCommand": "/workspaces/{{cookiecutter.project_name}}/post-devenv-start.sh"
+}

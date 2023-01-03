@@ -1,0 +1,10 @@
+{{cookiecutter.dbt_profile}}:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: {{cookiecutter.gcp_dev_project}}
+      dataset: {{cookiecutter.gcp_default_dataset}}
+      threads: 4
+      location: {{cookiecutter.gcp_location}}
